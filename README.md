@@ -12,7 +12,7 @@
   - [Ponadczasowe Święta](ponadczasowe_swieta.cpp/)
   - [Wielka Inflacja](wielka_inflacja.cpp/)
   - [Kalendarz prasłowian](kalendarz_praslowian.cpp/)
-  - [Zagionione miasto](zaginione_miasto.cpp/)
+  - [Ogródki działkowe](ogrodki_dzialkowe.cpp/)
   - [Zadanie 1](zadanie1.cpp/)
   - [Zadanie 2](zadanie2.cpp/)
 
@@ -249,6 +249,353 @@ Przykład:
 2222: (150,214) (302,107) (302,107)
 2789: (29,1090)
 NIE
-	
 
-    
+### [Misja Janusza](misja_janusza.cpp/)
+
+Janusz znowu coś sknocił. Po powrocie z interwencji podczas koronacji Bolesława Chrobrego linia czasu przestała być stabilna – Janusz zamiast subtelnie naprawić drobne zakłócenie, przypadkiem zainspirował Chrobrego do wynalezienia elektryczności na wieki przed Edisonem! Efekt? W 1025 roku rycerze walczą mieczami świetlnymi, a Mieszko II twierdzi, że widział UFO.
+
+Stach, wieczny teoretyk czasowy, zaraz zaproponował genialne rozwiązanie: „Janusz, może spróbuj wrócić do tego momentu i zamiast wyrywać się z takimi pomysłami, tylko pomachaj flagą Chrobrego! Kto wie, może to wystarczy?” Grażyna, szefowa misji, kiwała głową, mrużąc oczy. „Janusz, decyzja należy do ciebie, ale pamiętaj – jeśli znowu coś sknocisz, wracasz na miesiąc do epoki lodowcowej, z dietą złożoną wyłącznie z rozmrożonej wody mamutów. Podobno niezbyt orzeźwiająca.”
+
+Janusz musi przebrnąć przez serię decyzji, by na powrót ustabilizować linię czasu. W tej trudnej misji pomoże mu nieco przestarzały, ale wciąż funkcjonalny system MOWKiCz (Monitor Ostatecznego Wyrównania Krawędzi Czasu), który wrzuca Janusza w wybrany stabilny punkt czasu i wskazuje decyzje prowadzące do innych punktów. Janusz musi przemieszczać się między punktami w linii czasu i w każdym z nich podjąć decyzję, która prowadzi do następnego punktu. Każde przejście między punktami zmienia status docelowego punktu na przeciwny do statusu punktu, z którego Janusz przybył – stabilny zmienia się w niestabilny i odwrotnie. Celem jest osiągnięcie sytuacji, w której ostatni punkt w czasie – ten, z którego nie ma już przejścia dalej – zachowuje stabilność.
+
+MOWKiCz nie jest idealny i bywa, że stabilizacja nie jest możliwa. W takim przypadku Janusz może spróbować wybrać mniejsze zło: ugrzęznąć w pętli czasowej, to znaczy będzie krążyć między punktami bez końca, zmieniając ich status. Grażyna nazywa to pętlą. Gorsza opcja to sytuacja, w której system nie daje już żadnych szans na stabilizację, co oznacza nieuniknioną katastrofę temporalną.
+
+Czy Janusz może doprowadzić do stabilizacji systemu? Czasem sukces wydaje się niemożliwy, ale system pozwala na balansowanie na krawędzi chaosu. Jeśli jednak nie ma żadnej szansy na stabilność, pozostaje Januszowi czekać na najgorsze - tyradę Grażyny.
+
+Wejście:
+Na wejściu program otrzymuje liczbę naturalną t, oznaczającą liczbę testów. Następnie podanych jest t zestawów danych. Każdy zestaw składa się z trzech liczb naturalnych n, m oraz s oznaczających liczbę punktów, liczbę połączeń pomiędzy nimi i numer punktu, z którego rozpoczyna się naprawianie linii czasu.
+W kolejnych m liniach występują pary liczb naturalnych x i y – które informują, że decyzja w punkcie czasu nr x prowadzi do punktu nr y. Należy przyjąć, że nie pojawią się wielokrotnie te same połączenia ani pętle (czyli połączenia które zaczynają się i kończą w tym samym punkcie).
+Punkty numerowane są od 0.
+1 ≤ t ≤ 10
+1 ≤ n ≤ 100000
+0 ≤ m ≤ 2*n
+0 ≤ x,y < n
+Wyjście:
+
+Na wyjściu dla każdego testu program ma wypisać informację NIE, jeżeli nie ma możliwości, by Janusz doprowadził do stabilizacji, PETLA, jeżeli nie da się uzyskać stabilizacji, ale można doprowadzić do pętli lub TAK, jeżeli Janusz może doprowadzić do stabilizacji. W przypadku sukcesu należy w drugiej linii wyjścia dla danego testu wypisać numery punktów, które kolejno należy odwiedzić. Należy podać najkrótsze rozwiązanie. W przypadku ścieżek równej długości należy wybrać pierwszą leksykograficznie.
+
+Przykład:
+
+#### Wejście:
+3
+6 7 3
+0 1
+1 5
+2 0
+2 1
+3 2
+3 4
+4 0
+4 3 0
+0 1
+1 2
+2 3
+2 2 0
+0 1
+1 0
+
+#### Wyjście:
+TAK
+3 2 0 1 5
+NIE
+PETLA
+
+### [Powracający czas](powracajacy_czas.cpp/)
+
+ Co by się stało, gdyby podróżnik w czasie cofnął się do przeszłości i powstrzymał (umyślnie lub przez przypadek) spotkanie swoich rodziców? Spowodowałoby to, że nigdy by się nie spotkali, a podróżnik nigdy by się nie urodził. Skoro jednak nie istniałby, nie mógłby cofnąć się w czasie, by powstrzymać spotkanie swoich rodziców – co z kolei oznacza, że w końcu by się urodził...
+
+Problem ten, bardziej znany jako Paradoks Dziadka, jest jednym z klasycznych paradoksów związanych z podróżami w czasie. W takim przypadku dochodzi do zapętlenia czasu, w wyniku którego tworzy się cykl powiązanych wydarzeń. Formalnie rzecz biorąc, mamy zamknięty ciąg zdarzeń o długości N: e1 < e2 < ... < eN, gdzie wydarzenie eN jest powiązane z wydarzeniem e1. Wartości ei są liczbami całkowitymi, oznaczającymi znacznik czasowy wydarzenia.
+
+Grażyna, Janusz i Stach nie mieli tym razem szczęścia – trafili do pewnego punktu takiego cyklu czasowego. Nie wiedzą, w którym punkcie cyklu się znajdują ani ile wydarzeń zawiera cykl, w którym utknęli. Wehikuł czasu, zgodnie z protokołem kryzysowym, natychmiast przeszedł w tryb przywracania i dla bezpieczeństwa pozwala jedynie podróżować w przód po kolejnych wydarzeniach w tym cyklu. Zgodnie z procedurą, pierwszym krokiem w takiej sytuacji powinno być zbadanie długości cyklu. Sytuacja na pokładzie zaczęła jednak robić się napięta. Grażyna nalega, by postępować zgodnie z protokołem, a Janusz twierdzi, że znalezienie rozwiązania zajmie wieki, więc zaraz wymyśli jakieś lepsze wyjście. Wtedy do akcji wkroczył Stach, który obiecał, że znajdzie szybkie rozwiązanie, pozwalające ustalić długość cyklu. Pomóż mu w tym zadaniu.
+
+Wehikuł czasu w trybie przywracania udostępnia tylko jedną operację:
+
+int time_jump(unsigned int t);
+
+Operacja ta, dla zadanego kroku t, pozwala przeskoczyć do wydarzenia oddalonego od aktualnego wydarzenia ei o t wydarzeń, tj. do wydarzenia ei+t (uwzględniając zapętlenie czasu). Zwraca ona znacznik czasowy tego nowego wydarzenia (wartość ei+t). Wykonanie operacji time_jump(0) spowoduje zwrócenie znacznika czasowego aktualnego wydarzenia (wartość ei).
+
+Wejście
+Na wejściu program otrzymuje liczbę naturalną T oznaczającą liczbę zestawów danych. Dla każdego testu zdefiniowane są funkcje:
+
+int time_jump(unsigned int t);
+void next_test();
+
+Funkcja next_test() pozwala załadować kolejny* zestaw danych (cykl, dla którego należy znaleźć jego długość).
+*Wywołanie tej funkcji po ostatnim zestawie danych nie zakończy się błędem (załadowany zostanie pierwszy cykl).
+1 ≤ T ≤ 100 000
+1 ≤ N ≤ 10 9
+-10 9 ≤ ei ≤ 10 9 dla każdego 1 ≤ i ≤ N
+
+Wyjście
+Na wyjściu program powinien wypisać T liczb, z których każda reprezentuje długość cyklu dla odpowiedniego zestawu danych. Liczby powinny być oddzielone spacjami.
+Przykład
+#### Wejście
+2
+
+Ukryte cykle
+cykl 1: {-1300, -893, -86, 4, 6, 79, 102, 745, 1945, 2345}
+cykl 2: {-101, -100, 17, 1900, 2400}    
+
+![obraz](https://github.com/user-attachments/assets/aa9c3dc1-b27a-41b0-b927-8fcf6105fb9a)
+
+#### Wyjście
+10 5 
+
+Uwagi techniczne
+W rozwiązaniu nie należy dodawać żadnej dyrektywy preprocesora dołączającej plik nagłówkowy z udostępnionymi funkcjami. Rozwiązanie nie powinno również zawierać definicji tych funkcji w swojej treści. Przykładowy program (niepoprawne rozwiązanie) wykorzystujący udostępnione funkcje:
+
+#include <iostream>
+
+int main(){
+    int n;
+    std::cin>>n;
+    while(n--){
+        int begin = time_jump(0); 
+        for(int i=0; i<=n; i++){
+            int time_stmp = time_jump(5);
+        }
+        std::cout<<(n+1)*5<<' ';
+        next_test();
+    }
+    return 0;
+}
+
+Uwaga! Program należy napisać wykorzystując metodę dziel i zwyciężaj.
+
+### [Ogród przypraw](ogrod_przypraw.cpp/)
+
+Janusz, Stach i Grażyna zostali wysłani do roku 1574, kiedy to odbywała się wielka uczta powitalna Henryka Walezego. Według danych Kronostatu podczas uczty doszło do kulinarnej katastrofy - królewski pałacowy ogród przypraw został źle zaplanowany, co spowodowało, że niektóre przyprawy rosły w trudno dostępnych miejscach, a zbiór był niezwykle kosztowny. Jednak według historycznych zapisów taka katastrofa nigdy nie miała miejsca. Kronostat zidentyfikował poważną anomalię czasową, która zakłóciła oryginalny projekt ogrodu, zmieniając jego układ w skomplikowany, chaotyczny labirynt przypraw. Podróżnicy dostali zatem zadanie przeprojektowania ogrodu tak, aby koszt zbioru przypraw do królewskich potraw był jak najmniejszy.
+
+Ogród przypraw jest podzielony na grządki ułożone w kwadratowej siatce z wytyczonymi ścieżkami pomiędzy nimi. Grządki są ponumerowane wzdłuż ścieżek poziomych (wierszy) i pionowych (kolumn) od 0 do n-1.
+
+W każdej ścieżce poziomej (wierszu) i pionowej (kolumnie) można przypisać przyprawę tylko do jednej grządki. Oznacza to, że w danym wierszu może być wybrana dokładnie jedna grządka oraz w danej kolumnie również dokładnie jedna grządka. Jest tak, bo według obliczeń królewskiego astrologa, mistrza Horacjusza Ziółkowskiego przyprawy z jednej ścieżki nie mogą rosnąć na więcej niż jednej grządce. Inaczej grozi to zakwaszeniem atmosfery, nadmiarem mocy bazylii i samozapłonem oregano. Każda grządka ma przypisany koszt zbioru przypraw. Podczas przydziału grządek trzeba tylko pamiętać, że plan nasadzeń musiał być zgodny z królewskim dekretem, który nakazuje zaczynać sadzenie od najniższych numerów ścieżek tam, gdzie jest to możliwe.
+Wejście
+
+Na wejściu program otrzyma liczbę dodatnią 1<=n<=35, oznaczającą liczbę ścieżek i grządek w ogrodzie. W kolejnych n wierszach znajdzie się ciąg n liczb naturalnych, oznaczających koszt zbioru przyprawy z danej grządki. Koszt na poszczególnych grządkach nie przekracza 1000.
+Wyjście
+
+Na wyjściu program musi wypisać n liczb, gdzie każda z nich oznacza numer ścieżki, wzdłuż której należy posadzić przyprawę na danej grządce. Ścieżki i grządki są numerowane od 0.
+
+UWAGA! W zadaniu nie można używać bibliotek STL. Zadanie należy zaimplementować wykorzystując metodę przeszukiwania z nawrotami.
+Przykład
+#### Wejście:
+4
+5 3 2 2
+1 2 3 3
+2 1 8 7
+3 5 3 2
+
+#### Wyjście:
+1 2 0 3
+
+### [Ponadczasowe Święta](ponadczasowe_swieta.cpp/)
+
+Zbliżają się Święta, a to oznacza, że Święty Mikołaj ma pełne ręce pracy. Choć wiele osób wyjaśnia jego zdolność dostarczania prezentów do milionów domów w jedną noc za pomocą magii, prawda jest znacznie prostsza i bardziej logiczna. Święty Mikołaj to po prostu podróżnik w czasie!
+
+W tym roku nie obyło się bez problemów. W Fabryce Świętego Mikołaja doszło do opóźnień z powodu chaosu w dokumentacji. Okazało się, że kolorowe łańcuchy świąteczne, które miały posłużyć do dekoracji ogrodzenia wokół fabryki, są zbyt krótkie, co spowodowało zakłócenia w pracy elfów. (W linii czasowej Świętego Mikołaja elfy to nie tylko legenda). Końce łańcucha muszą być zaczepione o odpowiednio lewy i prawy słupek przęsła. Łańcuch można skrócić, ale nie da się go wydłużyć. Aby zminimalizować koszty, fabryka planuje zamówić wszystkie łańcuchy w jednym rozmiarze – wystarczająco długim, by pasowały do każdego przęsła ogrodzenia, lecz nie nadmiernie długim, co mogłoby zwiększyć obciążenie elfów.
+
+Ogrodzenie fabryki składa się z n słupków rozmieszczonych w nieregularnych odległościach (słupki te są jednak w miarę równomiernie rozłożone w pewnym zakresie). Oznacza to, że przęsła mogą mieć różne długości. W dokumentacji zapisano pozycje wszystkich słupków, lecz są one podane w losowej kolejności. Elfy nie mogą sobie pozwolić na błędy, dlatego poprosiły o pomoc Kronostatu. Zadaniem Grażyny, Janusza i Stacha jest przejrzenie dokumentacji i ustalenie długości najdłuższego przęsła ogrodzenia. Dzięki temu Fabryka Świętego Mikołaja będzie mogła zamówić łańcuchy o odpowiedniej długości.
+Wejście
+
+W pierwszej linii wejścia znajduje się liczba naturalna n (2 ≤ n ≤ 2 000 000) oznaczająca liczbę słupków ogrodzenia. W kolejnej linii znajduje się n liczb rzeczywistych -10 9 ≤ pi ≤ 10 9 — pozycje słupków ogrodzenia w losowej kolejności.
+Wyjście
+
+Na wyjściu należy wypisać jedną liczbę rzeczywistą — długość najdłuższego przęsła z dokładnością do 4 miejsc po przecinku.
+Przykład
+#### Wejście
+8
+7.6 -2.0 12.0 0.3 9.3 2.0 4.5 5.1
+
+#### Wyjscie
+2.7000
+
+Uwaga! Rozwiązanie ma opierać się na algorytmie sortowania w czasie liniowym. Nie można używać STL.
+
+### [Wielka Inflacja](wielka_inflacja.cpp/)
+
+Kolejną misją Grażyny, Janusza i Stacha jest złagodzenie skutków hiperinflacji, która dotknęła Polskę na przełomie lat 80. i 90. XX wieku.
+
+W tamtym okresie cała gospodarka chwiała się w posadach. Szczególnie ciężko mieli przedsiębiorcy (nazywani wówczas prywaciarzami). Załoga Kronostatu musiała więc na chwilę odstąpić od prostowania linii czasu i zająć się księgowością – oczywiście w jej kreatywnej wersji.
+
+Janusz i Stach mają za zadanie odnaleźć przedsiębiorców w tarapatach, co nie jest szczególnie trudnym wyzwaniem. Grażyna, jako mózg operacji i główna księgowa zespołu, musi zebrać od przedsiębiorców wykazy sprzedanych towarów i spróbować przyporządkować poszczególne produkty do najbardziej korzystnych kategorii podatkowych. Dzięki temu przedsiębiorcy zapłacą niższe podatki, co pomoże im uratować swoje biznesy.
+
+Przykładowa tabela Pana Jasia, handlarza wihajstrami: 
+![obraz](https://github.com/user-attachments/assets/3e93ef25-066e-4966-9d48-bb9624f2934a)
+
+Grażyna doszła do wniosku, że odrobina kreatywności w tym przypadku nie zaszkodzi. Uważa ona, że najdroższy produkt, wyceniony na 5000 zł, nie powinien być w całości opodatkowany, ponieważ jego cena wynika z wartości wielu części składowych, a nie za wszystkie z nich należy naliczać podatek. Zdecydowała, że kwotę 4000 zł, która podlega opodatkowaniu, należy obciążyć najniższą stawką podatkową wynoszącą 5%. Z kolei "dla równowagi" najtańszy produkt powinien zostać opodatkowany najwyższą stawką – 30%. Grażyna jest przekonana, że Urząd Skarbowy nie powinien mieć zastrzeżeń. A jeśli jednak pojawią się wątpliwości, ma nietypowe rozwiązanie: należy wysłać urzędników na miesiąc do średniowiecza, co jej zdaniem skutecznie rozwiąże problem.
+
+Pamiętaj, że jeżeli dana lista zawiera M produktów, to zawiera również M stawek podatkowych. Stawki te nie muszą być unikatowe. W obliczeniach Grażyna musi wykorzystać wszystkie M wartości.
+
+Napisz program, który obliczy najniższą wartość podatku jaką mogą zapłacić przedsiębiorcy
+Wejście
+
+W pierwszej linii wejścia znajduje się liczba naturalna n - ilość przedsiębiorców, którym trzeba pomóc.
+Następnie n-razy należy pobrać ze standardowego wejścia:
+o - ilość operacji do wykonania dla danego przedsiębiorcy.
+Kolejno pobieramy o linii w formacie:
+a p t - dodaj produkt w cenie p zł, obłożony podatkiem t%
+lub p x - zmień cenę najdroższego produktu o x (jeśli ta operacja nie jest możliwa - nie rób nic).
+
+1 ≤ n ≤ 30 000
+1 ≤ o ≤ 100 000
+1 ≤ p ≤ 100 000
+1 ≤ t ≤ 100
+-99 999 ≤ x ≤ 99 999
+
+Wyjście
+Na wyjściu powinniśmy otrzymać n linii z wyliczonym najniższym podatkiem dla każdego przedsiębiorcy wyrażony w groszach.
+Przykład:
+#### Wejście:
+2
+10
+a 1000 20
+a 1200 10
+a 900  5
+a 1500 30
+p 100
+a 3000 40
+p -200
+p -100
+a 20 20
+a 30 4
+8
+a 970 20
+a 1800 10
+a 1900  5
+a 150 30
+a 2000 40
+p -200
+a 50 10
+a 9000 4
+	
+#### Wyjście:
+70500
+107400
+
+UWAGA! Zadanie należy rozwiązać samodzielnie implementując kopiec!
+
+### [Kalendarz prasłowian](kalendarz_praslowian.cpp/)
+
+Grażyna, Janusz i Stach zostali wysłani w czasie, by pomóc prasłowianom rozwiązać tajemniczy problem związany z ich kalendarzem rolniczym. Wierzyli oni, że aby przewidzieć najlepsze dni na siewy i zbiory, należy dokonać odpowiednich obliczeń na podstawie zestawu liczb związanych z obserwacją księżyca i gwiazd.
+
+Według miejscowych starców, liczby mające parzystą liczbę unikalnych dzielników pierwszych są uważane za stabilne i korzystne dla upraw. Spośród nich trzeba jednak wybrać dokładnie k-tą pod względem wielkości, by zgodnie z tradycją ogłosić dzień rozpoczęcia prac polowych. Jeśli liczba spełniająca warunki nie zostanie znaleziona na czas, rok może być uznany za stracony, a zbiory zagrożone.
+
+Twoim zadaniem jest pomóc podróżnikom w przeanalizowaniu danych liczbowych i znalezieniu właściwej liczby, by ocalić zbiory prasłowian.
+Wejście:
+
+Na wejściu znajduje się liczba t, oznaczająca liczbę zestawów danych. Następnie dla każdego zestawu danych podano:
+
+    liczbę n, oznaczającą liczbę obserwowanych wartości liczbowych,
+    n liczb naturalnych a1, a2, ..., an, wartości tych liczb,
+    liczbę k, wskazującą pozycję szukanej wartości.
+
+1 ≤ t ≤ 10
+1 ≤ n ≤ 1000000
+1 ≤ ai ≤ 1000000
+0 ≤ k < n
+Wyjście:
+
+Dla każdego zestawu danych należy wypisać k-tą wartość spośród tych korzystnych. Jeśli takich liczb jest mniej niż k, należy wypisać BRAK DANYCH.
+Przykład:
+#### Wejście:
+2
+5
+12 15 9 10 6
+2
+4
+8 14 7 18
+2
+
+#### Wyjście:
+12
+BRAK DANYCH
+
+UWAGA! Zadanie należy rozwiązać wykorzystując algorytm selekcji.
+
+### [Ogródki działkowe](ogrodki_dzialkowe.cpp/)
+
+Nieopodal gospodarstwa Uli znajdują się pozostałości po starych ogródkach działkowych. Nasza bohaterka postanowiła przestudiować mapę tego miejsca. Według tutejszych opowieści początkowo było tam n działek o kształtach prostokątnych. Boki tych prostokątów były równoległe do osi współrzędnych, a rogi znajdowały się w punktach o całkowitych współrzędnych. Ogrodzenia działek nie przecinały się, ale mogły się ze sobą stykać. Z biegiem czasu właściciele zaczęli łączyć działki w większe, ale tylko wtedy, gdy złączenie ich również tworzyło prostokąt. W końcu pozostał jeden właściciel i jedna duża działka.
+
+Początkowo także na terenie każdej działki stał prostokątny budynek (na przykład szopa lub altanka). Boki również były równoległe do osi współrzędnych, a rogi znajdowały się w punktach o całkowitych współrzędnych. Niektóre budynki mogły stykać się z granicami ogrodzenia lub bokami innych budynków. Niestety dzisiaj nie wiadomo już gdzie przebiegały początkowe granice działek.
+
+Ula podejrzewa, że cała ta historia jest nieprawdziwa i chce sprawdzić, czy dla zadanego rozmieszczenia budynków podział działek jest możliwy.
+Wejście:
+
+W pierwszej linii wejścia znajduje się liczba naturalna t - liczba testów.
+Następnie dla każdego testu znajduje się opis terytorium działkowego. Test składa się z liczby naturalnej n, która oznacza liczbę budynków i działek. W kolejnych n liniach znajdują sie cztery liczby całkowite x1,y1,x2,y2, które są współrzędnymi kolejnych budynków, gdzie x1 i y1 to współrzędne lewego dolnego rogu, a x2 i y2 - prawego górnego. Należy przyjąć, że budynki nie nachodzą na siebie.
+1 ≤ n ≤ 1000
+0 ≤ x1,y1,x2,y2 ≤ 1000000000
+Wyjście:
+
+Na wyjściu dla każdego testu należy wypisać słowo TAK, jeżeli dla tak rozstawionych budynków możliwe jest podzielenie terytorium na działki zgodnie z zasadami. Jeżeli nie można wykonać takiego podziału, należy wypisać słowo NIE.
+Przykład:
+#### Wejście:
+2
+4
+0 0 1 2
+0 2 1 3
+1 0 2 1
+1 1 2 3
+4
+0 0 2 1
+1 2 3 3
+2 0 3 2
+0 1 1 3
+
+#### Wyjście:
+TAK
+NIE
+
+### [Zadanie 1](zadanie1.cpp/)
+
+Napisz program, który wczytuje n par liczb całkowitych i porządkuje je według następujących zasad:
+
+    Liczby parzyste z pierwszych elementów par powinny znaleźć się na początku, a liczby nieparzyste na końcu.
+    W obrębie liczb parzystych i nieparzystych obowiązuje porządek rosnący względem pierwszego elementu pary.
+    Jeśli wartości pierwszych elementów z pary są równe, należy zachować kolejność wczytania pary.
+
+Wejście:
+W pierwszej linii znajduje się liczba całkowita n (1 ≤ n ≤ 30000) – liczba par. W kolejnej linii podano n par liczb całkowitych (a1, b1), (a2, b2), ..., (an, bn) (-106 ≤ ai, bi ≤ 106).
+Wyjście:
+
+Na wyjściu należy wyświetlić n liczb będących drugimi elementami par, uporządkowanych zgodnie z opisanymi zasadami.
+
+UWAGA! W zadaniu nie można używać STL-a. Należy samodzielnie zaimplementować algorytm sortujący.
+
+Przykład:
+#### Wejście:
+6  
+7 20 2 30 3 40 8 50 6 60 5 70  
+
+#### Wyjście:
+30 60 50 40 70 20  
+
+
+### [Zadanie 2](zadanie2.cpp/)
+
+Napisz program, który obliczy wyrażenie zadane w Odwrotnej Notacji Polskiej (ONP).
+Wejście:
+
+W pierwszej linii znajduje się liczba całkowita t (1 ≤ t ≤ 10) – liczba testów. Następnie podanych jest t zestawów testowych. Na zestaw składa się liczba całkowita n (3 ≤ n < 1000000). W kolejnej linii podano n elementów, na które składają się liczby całkowite dodatnie (operandy) i operatory (+, -, *, /). Wyrażenie podane w linii stanowi poprawne wyrażenie w ONP i nie występuje w nim dzielenie przez 0. Należy założyć, że żadna z wartości: końcowa oraz pośrednie nie wykraczają poza zakres liczb long long. Dla operacji '/' przyjmij, że wykonywane jest dzielenie całkowite.
+Wyjście:
+
+Na wyjściu należy dla każdego wyrażenia wyświetlić jego wartość.
+
+UWAGA! W zadaniu nie można używać STL-a. Dopuszczalne jest użycie typu string, strumieni, funkcji obsługujących konwersję napisów do liczb. Przydatne mogą być funkcje isdigit oraz stoi.
+
+Przykład:
+#### Wejście:
+3
+3
+3 19 +
+9
+9 66 - 4 82 / * 45 +
+7
+95 32 + 24 + 8 - 
+
+#### Wyjście:
+22
+45
+143
+
+
