@@ -1,3 +1,83 @@
+/*
+Dzięki drobiazgowemu planowaniu Grażyny Sejf Paradoksu zużył o połowę mniej energii niż w ubiegłym miesiącu, 
+gdy za deponowanie przedmiotów brał się Janusz. Przez to udało się uniknąć wysokich rachunków za energię od PGE (Ponadgalaktyczna Grupa Energetyczna).
+
+Nasza załoga nie mogła jednak długo cieszyć się z zaoszczędzonych środków. Janusz wymieniając uszczelkę pod głowicą silnika w wehikule czasu uszkodził chłodnicę wypełnioną ciekłym azotem (zgodnie z prawem Murphy'ego 
+
+"Jeśli coś może pójść nie tak, to pójdzie nie tak"). Zamiast spędzić miło czas, oglądając swój ulubiony sport- prasowanie ekstremalne, musiał on wybrać się do jednego z pobliskich sklepów sieci "Reptylianka". 
+W sklepie tym można dostać praktycznie wszystko: od polędwiczek z czerwi pustynnych, aż po części wymienne do wehikułów z silnikiem diesla. Jedyną wadą tego dyskontu są kolejki, których długość liczy się w latach świetlnych. 
+
+Wszystko przez to, że właściciel sklepu zatrudnił w zeszłym miesiącu do pracy na kasie szarych kosmitów, którzy mając tylko trzy palce nie są w stanie skanować tylu produktów, co mające po kilkanaście par odnóży insektoidy z konkurencyjnych sieci. 
+Widząc skalę problemu Janusz udał się do managera sklepu i zaproponował, że za odpowiednio dużą zniżkę przy zakupach pomoże mu skrócić czas oczekiwania klientów poprzez opracowanie systemu do automatycznego zarządzania kolejkami.
+
+Zadaniem programu będzie kierowanie klientów do najmniej obleganych kas. 
+Program ma symulować pracę sklepu przez określony czas liczony w sekundach oraz wyświetlać stan każdej kasy 
+(ilość osób w kolejce oraz szacowany czas oczekiwania w kolejce) po upływie tego czasu.
+
+Te same kasy mogą w trakcie trwania symulacji być otwierane i zamykane kilkukrotnie. W przypadku otwarcia kasy czas oczekiwania i ilość osób w kolejce wynosi 0. 
+Kasy, w których czas oczekiwania w kolejce (nie liczba osób - ponieważ może być tak, 
+że jedna osoba zrobiła zakupy na cały rok i czas obsłużenia takiej osoby jest wyższy niż 10 standardowych klientów) jest najkrótszy powinny być przez system wychwytywane, 
+a nowe osoby powinny być do takich kas kierowane. Nie rozpatrujemy sytuacji znanych z supermarketów, gdzie informacja o kasie, która będzie otwarta niebawem, podawana jest przez megafon i klienci mogą tworzyć kolejki do jeszcze nie otwartej kasy. 
+
+Dodatkowo zakładamy, iż sekwencyjne zamykanie i otwieranie tej samej kasy w sklepie nie występuje. 
+W naszym programie, gdy kasa ma zostać zamknięta kasjer obsługuje tylko pierwszą osobę z kolejki (dla uproszczenia przyjmujemy, że taka osoba zostaje obsłużona natychmiastowo,
+wszakże kosmici mają możliwość zaginania czasoprzestrzeni). Pozostałe osoby, zaczynając od drugiej osoby, 
+należy pokierować do pozostałych kas w ten sam sposób jak opisano to dla nowych klientów.
+
+Zakładamy, że w sklepie musi w każdym momencie istnieć co najmniej jedna otwarta kasa. 
+W przypadku, gdy dwie kasy mają jednakowy czas oczekiwania - system wybiera kasę o mniejszym numerze (id).
+
+Wejście
+W pierwszej linii wejścia znajdują się cztery liczby naturalne: t - czas pracy sklepu podlegający symulacji liczony w sekundach; 
+l - ilość kas w sklepie; 
+s - sprawność kas, czyli liczba sekund potrzebna na zeskanowanie produktu przez kasjera; 
+z - czas, jaki potrzebuje klient na dokonanie płatności. 
+
+W kolejnych liniach pojawiać będą się liczby/symbole opisujące zdarzenia, których wyróżniamy 3 rodzaje: 
+o - otwarcie kasy, 
+z - zamknięcie kasy, 
+k - pojawienie się nowego klienta oczekującego na obsługę. 
+
+Każda linia zaczyna się od jednoznakowej flagi: f - oznaczającej rodzaj zdarzenia (o,z,k - jak opisano wcześniej).
+W przypadku, gdy f == 'k' kolejne dwa parametry to: 
+p - względny czas w sekundach liczony od rozpoczęcia symulacji w przypadku pierwszego klienta, a dla pozostałych klientów- czas od pojawienia się poprzedniego klienta 
+(jest gwarancja, że suma wszystkich względnych czasów w danych wejściowych pi będzie większa lub równa t) ; 
+r - liczba produktów w koszyku klienta. 
+Gdy f == 'o' lub f == 'z' kolejnym parametrem znajdującym się za flagą jest a - numer kasy.
+
+Wyjście
+Na wyjściu powinniśmy otrzymać stan każdej kasy po upływie czasu t zapisany w postaci:
+K[numer_kasy]: [ilosc_osob_w_kolejce]o, [dlugosc_kolejki_w_sekundach]s - jeżeli kasa jest otwarta lub
+K[numer_kasy]: z - gdy kasa jest zamknięta.
+
+Informacje o kasach powinny być wyświetlone w jednej linii i powinny być oddzielone przecinkami.
+
+UWAGA! W zadaniu nie można używać bibliotek STL. Należy wykorzystać samodzielnie napisaną implementację kolejki.
+Przykład:
+
+Wejście:
+30 5 5 5			
+o 2				
+o 1				
+k 0 8			
+k 1 7			
+k 1 10		
+k 0 5			
+k 0 4			
+o 4				
+k 10 8		
+k 0 5			
+k 10 6		
+z 1				
+k 7 7			
+k 0 5	
+k 8 4
+	
+
+Wyjście:
+K0: z, K1: z, K2: 4o 136s, K3: z, K4: 5o 147s
+*/
+
 #include <iostream>
 
 struct Alien

@@ -1,3 +1,46 @@
+/*
+Co by się stało, gdyby podróżnik w czasie cofnął się do przeszłości i powstrzymał (umyślnie lub przez przypadek) spotkanie swoich rodziców? Spowodowałoby to, że nigdy by się nie spotkali, 
+a podróżnik nigdy by się nie urodził. Skoro jednak nie istniałby, nie mógłby cofnąć się w czasie, by powstrzymać spotkanie swoich rodziców – co z kolei oznacza, że w końcu by się urodził...
+Problem ten, bardziej znany jako Paradoks Dziadka, jest jednym z klasycznych paradoksów związanych z podróżami w czasie. 
+W takim przypadku dochodzi do zapętlenia czasu, w wyniku którego tworzy się cykl powiązanych wydarzeń. Formalnie rzecz biorąc, mamy zamknięty ciąg zdarzeń o długości N: e1 < e2 < ... < eN, 
+gdzie wydarzenie eN jest powiązane z wydarzeniem e1. Wartości ei są liczbami całkowitymi, oznaczającymi znacznik czasowy wydarzenia.
+
+Grażyna, Janusz i Stach nie mieli tym razem szczęścia – trafili do pewnego punktu takiego cyklu czasowego. Nie wiedzą, w którym punkcie cyklu się znajdują ani ile wydarzeń zawiera cykl, 
+w którym utknęli. Wehikuł czasu, zgodnie z protokołem kryzysowym, natychmiast przeszedł w tryb przywracania i dla bezpieczeństwa pozwala jedynie podróżować w przód po kolejnych wydarzeniach w tym cyklu. 
+Zgodnie z procedurą, pierwszym krokiem w takiej sytuacji powinno być zbadanie długości cyklu. Sytuacja na pokładzie zaczęła jednak robić się napięta. Grażyna nalega, 
+by postępować zgodnie z protokołem, a Janusz twierdzi, że znalezienie rozwiązania zajmie wieki, więc zaraz wymyśli jakieś lepsze wyjście. 
+
+Wtedy do akcji wkroczył Stach, który obiecał, że znajdzie szybkie rozwiązanie, pozwalające ustalić długość cyklu. Pomóż mu w tym zadaniu.
+Wehikuł czasu w trybie przywracania udostępnia tylko jedną operację:
+
+int time_jump(unsigned int t);
+
+Operacja ta, dla zadanego kroku t, pozwala przeskoczyć do wydarzenia oddalonego od aktualnego wydarzenia ei o t wydarzeń, tj. do wydarzenia ei+t (uwzględniając zapętlenie czasu). Zwraca ona znacznik czasowy tego nowego wydarzenia (wartość ei+t). Wykonanie operacji time_jump(0) spowoduje zwrócenie znacznika czasowego aktualnego wydarzenia (wartość ei).
+
+Wejście
+Na wejściu program otrzymuje liczbę naturalną T oznaczającą liczbę zestawów danych. Dla każdego testu zdefiniowane są funkcje:
+
+int time_jump(unsigned int t);
+void next_test();
+
+Funkcja next_test() pozwala załadować kolejny* zestaw danych (cykl, dla którego należy znaleźć jego długość).
+*Wywołanie tej funkcji po ostatnim zestawie danych nie zakończy się błędem (załadowany zostanie pierwszy cykl).
+1 ≤ T ≤ 100 000
+1 ≤ N ≤ 10 9
+-10 9 ≤ ei ≤ 10 9 dla każdego 1 ≤ i ≤ N
+
+Wyjście
+Na wyjściu program powinien wypisać T liczb, z których każda reprezentuje długość cyklu dla odpowiedniego zestawu danych. 
+Liczby powinny być oddzielone spacjami.
+Przykład
+Wejście
+2
+
+Ukryte cykle
+cykl 1: {-1300, -893, -86, 4, 6, 79, 102, 745, 1945, 2345}
+cykl 2: {-101, -100, 17, 1900, 2400}    
+*/
+
 #include <iostream>
 
 int time_jump(unsigned int t);

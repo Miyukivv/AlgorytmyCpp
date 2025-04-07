@@ -1,3 +1,27 @@
+/*
+Napisz program, który wczytuje n par liczb całkowitych i porządkuje je według następujących zasad:
+
+Liczby parzyste z pierwszych elementów par powinny znaleźć się na początku, a liczby nieparzyste na końcu.
+W obrębie liczb parzystych i nieparzystych obowiązuje porządek rosnący względem pierwszego elementu pary.
+Jeśli wartości pierwszych elementów z pary są równe, należy zachować kolejność wczytania pary.
+
+Wejście:
+W pierwszej linii znajduje się liczba całkowita n (1 ≤ n ≤ 30000) – liczba par. W kolejnej linii podano n par liczb całkowitych (a1, b1), (a2, b2), ..., (an, bn) (-106 ≤ ai, bi ≤ 106).
+
+Wyjście:
+Na wyjściu należy wyświetlić n liczb będących drugimi elementami par, uporządkowanych zgodnie z opisanymi zasadami.
+
+UWAGA! W zadaniu nie można używać STL-a. Należy samodzielnie zaimplementować algorytm sortujący.
+
+Przykład:
+Wejście:
+6  
+7 20 2 30 3 40 8 50 6 60 5 70  
+
+Wyjście:
+30 60 50 40 70 20  
+*/
+
 #include <iostream>
 
 struct Numbers{
